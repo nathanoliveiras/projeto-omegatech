@@ -1,13 +1,12 @@
 import styled from "styled-components"
 
 export const Form = styled.form`
-    border-style: solid;
-    border-color: #000;
     padding: 24px 40px 40px 40px;
-    margin: auto;
-    margin-top: 5%;
-    width: 25%;
-    height: 50%;
+    width: 50%;
+    min-height: 300px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     
     input{
         width: 100%;
@@ -15,9 +14,11 @@ export const Form = styled.form`
         margin-bottom: 32px;
         color: #878686;
         border: 1px solid #000;
-        padding-bottom: 8px;
+        padding: 8px;
         outline: none;
+        box-sizing: border-box;
     }
+    
     p{
         text-align: center;
         font-family: SharpSans,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,
@@ -27,19 +28,22 @@ export const Form = styled.form`
         font-weight: 500;
         margin: 25px 0px;
     }
+
     button{
-            border: none;
-            padding: 15px 30px;
-            width: 90px;
-            height: 20px;
-            text-align: center;
-            transition: 0.5s;
-            background-color: #E16F1C;
-            color:#FFF;
-            font-size: 1rem;
-            font-weight: 300;
-            display:flex;
-            justify-content: center;
-            align-items:center;      
+        border: none;
+        padding: 5px 0;
+        width: 120px;
+        text-align: center;
+        color:#FFF;
+        font-size: 1rem;
+        bottom: 0;
     }
+
+    .blue-button {
+        background-color: #3980FF;
+    }
+
+    .orange-button {
+        background-color: #E16F1C;
+    }    
 `

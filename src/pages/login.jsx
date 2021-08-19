@@ -3,6 +3,7 @@ import { Container } from "../components/container";
 import {Header} from "../components/header";
 import Logo from "../assets/logo-blog.png"
 import { Form } from "../components/form";
+import { Section } from "../components/section-flex";
 
 export default class Login extends Component {
     render(){
@@ -11,19 +12,20 @@ export default class Login extends Component {
                 <Header>
                     <img src={Logo} alt="Logo omega tech"/>              
                 </Header>
+                <Section>
                 <Form>
                     <p>Faça seu login</p>
                     <input 
                         type="email" 
                         placeholder="Email"
                         name="txtEmail"
-                        />
-                        <input 
+                    />
+                    <input 
                         type="password" 
                         placeholder="Senha"
                         name="txtPassword"
-                        />
-                        <button className="botao-login" type="submit">Entrar</button>
+                    />
+                    <button className="orange-button" type="submit">Entrar</button>
                 </Form>
                 <Form>
                     <p>Cadastre-se</p>
@@ -42,8 +44,9 @@ export default class Login extends Component {
                         placeholder="Senha"
                         name="txtPassword"
                     />
-                    <button classname="botao-cadastro" type="submit">Cadastrar</button>
+                    <button className="blue-button" type="submit">Cadastrar</button>
                 </Form>
+                </Section>
             </Container>
         )
     }

@@ -1,16 +1,16 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Header = styled.header`
     background-color: #3980FF;
-    height: 19%;
     width: 100%;
-    justify-content: space-between;
+    padding: 1em 0;
 
     img{
-        height: 75%;
-        margin-left: 3%;
-        margin-top: 10px;
+        height: 90px;
+        display: block;
+        margin-left: 2em;
     }
+
     p{
         font-family:SharpSans,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,
                     Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,
