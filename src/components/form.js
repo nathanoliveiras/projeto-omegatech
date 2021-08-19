@@ -2,16 +2,17 @@ import styled from "styled-components"
 
 export const Form = styled.form`
     padding: 24px 40px 40px 40px;
-    width: 50%;
-    min-height: 300px;
+    width: 100%;
+    height: 400px;
     display: flex;
     flex-flow: column;
     align-items: center;
+    box-sizing: border-box;
     
-    input{
+    input, select{
         width: 100%;
         font-size: 12px;
-        margin-bottom: 32px;
+        margin-bottom: 1em;
         color: #878686;
         border: 1px solid #000;
         padding: 8px;
@@ -19,14 +20,25 @@ export const Form = styled.form`
         box-sizing: border-box;
     }
     
+    label {
+        padding-top: 1em;
+    }
+
     p{
         text-align: center;
-        font-family: SharpSans,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,
-                    Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,
-                    Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
         font-size: 1.5rem;
         font-weight: 500;
         margin: 25px 0px;
+    }
+
+    .two-inputs {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .date {
+        width: 45%;
     }
 
     button{
@@ -45,5 +57,5 @@ export const Form = styled.form`
 
     .orange-button {
         background-color: #E16F1C;
-    }    
+    }
 `

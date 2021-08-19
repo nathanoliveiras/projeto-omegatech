@@ -1,11 +1,12 @@
 import './style/reset.css'
 import Login from "./pages/login";
-import FormProposta from "./pages/form-proposta";
+import ProposalList from "./pages/proposal-list";
+import ProposalForm from './pages/proposal-form';
 
 
 function App() {
   return (
-   <FormProposta/>
+    <Login/>
   );
 }
 

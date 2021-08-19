@@ -6,7 +6,7 @@ import { Section } from "../components/section-flex";
 import { List } from "../components/proposal-list";
 import { NewProposal } from "../components/new-proposal";
 
-export default class FormProposta extends Component{
+export default class ProposalList extends Component{
     render(){
         return(
             <Container>
