@@ -1,4 +1,4 @@
-import './style/reset.css'
+import './style/index.css'
 import Login from "./pages/login";
 
 function App() {

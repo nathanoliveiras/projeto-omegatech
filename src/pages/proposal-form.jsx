@@ -1,9 +1,5 @@
 import { Component } from "react";
-import { Container } from "../components/container";
-import {Header} from "../components/header";
 import Logo from "../assets/logo-blog.png"
-import { Section } from "../components/section-flex";
-import { Form } from "../components/form";
 import { Link } from "react-router-dom";
 
 export default class ProposalForm extends Component {

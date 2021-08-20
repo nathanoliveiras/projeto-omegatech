@@ -1,10 +1,6 @@
 import { Component } from "react";
-import { Container } from "../components/container";
-import {Header} from "../components/header";
 import Logo from "../assets/logo-blog.png"
-import { Section } from "../components/section-flex";
-import { List } from "../components/proposal-list";
-import { NewProposal } from "../components/new-proposal";
+
 import { Link } from "react-router-dom";
 
 export default class ProposalList extends Component{
