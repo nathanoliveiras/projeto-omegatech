@@ -24,5 +24,9 @@ export const NewProposal = styled.section`
         padding: 1em 0;
         font-weight: bold;
     }
+    a{
+        text-decoration: none;
+        
+    }
 `
 

@@ -5,13 +5,15 @@ import Logo from "../assets/logo-blog.png"
 import { Section } from "../components/section-flex";
 import { List } from "../components/proposal-list";
 import { NewProposal } from "../components/new-proposal";
+import { Link } from "react-router-dom";
 
 export default class ProposalList extends Component{
+
     render(){
         return(
             <Container>
-                <Header>
-                    <img src={Logo} alt="Logo omega tech"/>
+                <Header>                    
+                    <img src={Logo} alt="Logo omega tech"/> 
                 </Header>
                 <Section>
                     <List>
@@ -21,7 +23,7 @@ export default class ProposalList extends Component{
                             <p>Data de Termino: 12/12/2022</p>
                             <p>Consumo Total: 1000 KWH</p>
                             <p>Fonte de Energia: RENOVAVEL</p>
-                            <p>Submercvado: NORTE</p>
+                            <p>Submercado: NORTE</p>
                             <p>Contratado: NÃO</p>
                             <p>Valor da Proposta: R$100.000</p>
                             <div className="buttons">
@@ -34,7 +36,7 @@ export default class ProposalList extends Component{
                             <p>Data de Termino: 12/12/2022</p>
                             <p>Consumo Total: 1000 KWH</p>
                             <p>Fonte de Energia: RENOVAVEL</p>
-                            <p>Submercvado: NORTE</p>
+                            <p>Submercado: NORTE</p>
                             <p>Contratado: NÃO</p>
                             <p>Valor da Proposta: R$100.000</p>
                             <div className="buttons">
@@ -47,7 +49,7 @@ export default class ProposalList extends Component{
                             <p>Data de Termino: 12/12/2022</p>
                             <p>Consumo Total: 1000 KWH</p>
                             <p>Fonte de Energia: RENOVAVEL</p>
-                            <p>Submercvado: NORTE</p>
+                            <p>Submercado: NORTE</p>
                             <p>Contratado: NÃO</p>
                             <p>Valor da Proposta: R$100.000</p>
                             <div className="buttons">
@@ -60,7 +62,7 @@ export default class ProposalList extends Component{
                             <p>Data de Termino: 12/12/2022</p>
                             <p>Consumo Total: 1000 KWH</p>
                             <p>Fonte de Energia: RENOVAVEL</p>
-                            <p>Submercvado: NORTE</p>
+                            <p>Submercado: NORTE</p>
                             <p>Contratado: NÃO</p>
                             <p>Valor da Proposta: R$100.000</p>
                             <div className="buttons">
@@ -69,12 +71,17 @@ export default class ProposalList extends Component{
                             </div>
                         </li>
                     </List>
-                    <NewProposal>
-                        <button>
-                            +   
-                        </button>
-                        <p>Nova proposta</p>
-                    </NewProposal>
+                    
+                        <NewProposal>
+                        <Link to="/proposal-form">
+                            <button>
+                                +   
+                            </button>
+                            </Link>
+                        
+                            <p>Nova proposta</p>
+                        </NewProposal>
+                    
                 </Section>
             </Container>
         )

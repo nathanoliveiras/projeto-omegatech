@@ -4,13 +4,15 @@ import {Header} from "../components/header";
 import Logo from "../assets/logo-blog.png"
 import { Form } from "../components/form";
 import { Section } from "../components/section-flex";
+import { Link } from "react-router-dom";
+
 
 export default class Login extends Component {
     render(){
         return(
             <Container>
                 <Header>
-                    <img src={Logo} alt="Logo omega tech"/>              
+                        <img src={Logo} alt="Logo omega tech"/>        
                 </Header>
                 <Section>
                 <Form>
@@ -25,7 +27,9 @@ export default class Login extends Component {
                         placeholder="Senha"
                         name="txtPassword"
                     />
-                    <button className="orange-button" type="submit">Entrar</button>
+                       
+                            <button className="orange-button" type="submit">Entrar</button>
+                       
                 </Form>
                 <Form>
                     <p>Cadastre-se</p>
@@ -44,7 +48,9 @@ export default class Login extends Component {
                         placeholder="Senha"
                         name="txtPassword"
                     />
-                    <button className="blue-button" type="submit">Cadastrar</button>
+                    <Link to ="/proposal-list">
+                        <button className="blue-button" type="submit">Cadastrar</button>
+                    </Link>                   
                 </Form>
                 </Section>
             </Container>
