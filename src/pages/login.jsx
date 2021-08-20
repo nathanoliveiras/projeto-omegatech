@@ -15,7 +15,9 @@ export default class Login extends Component {
                         <img src={Logo} alt="Logo omega tech"/>        
                 </Header>
                 <Section>
+                   
                 <Form>
+                    <h2>Calculadora de proposta</h2>
                     <p>Faça seu login</p>
                     <input 
                         type="email" 
@@ -27,31 +29,14 @@ export default class Login extends Component {
                         placeholder="Senha"
                         name="txtPassword"
                     />
-                       
-                            <button className="orange-button" type="submit">Entrar</button>
-                       
+                    <button 
+                        className="orange-button" 
+                        type="submit">Entrar
+                    </button>
+                    <p>Ainda não tem conta?<Link to='/register'>Cadastre-se aqui</Link></p>
+
                 </Form>
-                <Form>
-                    <p>Cadastre-se</p>
-                    <input 
-                        type="password" 
-                        placeholder="Nome"
-                        name="txtNome"
-                    />
-                    <input 
-                        type="email" 
-                        placeholder="Email"
-                        name="txtEmail"
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Senha"
-                        name="txtPassword"
-                    />
-                    <Link to ="/proposal-list">
-                        <button className="blue-button" type="submit">Cadastrar</button>
-                    </Link>                   
-                </Form>
+                
                 </Section>
             </Container>
         )

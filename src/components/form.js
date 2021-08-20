@@ -10,13 +10,13 @@ export const Form = styled.form`
     box-sizing: border-box;
     
     input, select{
-        width: 100%;
+        width: 75%;
+        border-radius: 5px;
         font-size: 12px;
         margin-bottom: 1em;
         color: #878686;
         border: 1px solid #000;
         padding: 8px;
-        outline: none;
         box-sizing: border-box;
     }
     
@@ -28,7 +28,11 @@ export const Form = styled.form`
         text-align: center;
         font-size: 1.5rem;
         font-weight: 500;
-        margin: 25px 0px;
+        margin: 35px 0px;
+    }
+    h2{
+        text-align: center;
+        justify-content: center;
     }
 
     .two-inputs {
@@ -49,6 +53,7 @@ export const Form = styled.form`
         color:#FFF;
         font-size: 1rem;
         bottom: 0;
+        margin-bottom: 10px;
     }
 
     .blue-button {
