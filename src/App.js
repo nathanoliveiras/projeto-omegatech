@@ -1,9 +1,10 @@
-import './style/reset.css'
-import Login from "./pages/login";
+import React from 'react';
+import Routes from './Routes';
+
 
 function App() {
   return (
-      <Login/>      
+      <Routes/>      
   );
 }
 

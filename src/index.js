@@ -1,20 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter,Switch, Route } from 'react-router-dom';
 import App from './App';
 import './style.css';
-import ProposalForm from './pages/proposal-form';
-import ProposalList from './pages/proposal-list';
-import Register from './pages/register';
+import { AuthProvider } from './providers/auth';
 
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route exact path='/' component={App} />
-      <Route exact path='/proposal-form' component={ProposalForm} />
-      <Route exact path='/proposal-list' component={ProposalList} />
-      <Route exact path='/register' component={Register} />
-    </Switch>
-  </BrowserRouter>
+  <React.StrictMode>
+    <AuthProvider>
+      <App/>
+    </AuthProvider>
+  </React.StrictMode>
   , document.getElementById('root'));
