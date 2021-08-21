@@ -10,7 +10,8 @@ function ProposalList() {
     const [proposal, setProposal] = useState([])
     useEffect(()=>{
       async function getProposal(){
-         const {data} =  await api.get('/proposal');
+         const {data} =  await api.get('/proposals');
+         console.log(data);
          setProposal({...data})
       }
       getProposal();
@@ -28,8 +29,8 @@ function ProposalList() {
                     <div className="font-bold text-2xl">Minhas propostas</div>
                     <Link to="/proposal-form" className="rounded  shadow-md hover:bg-opacity-80 lg:hidden flex items-center justify-center  pl-6 pr-6 bg-yellow-500 text-white font-bold">Nova proposta</Link>
                   </div>
-                    <div className="lg:overflow-auto" style={{maxHeight:'450px'}}>
-                      {proposal.map(data=><Proposal data={data} />)}
+                    <div className="lg:overflow-auto flex items-center" style={{maxHeight:'450px'}}>
+                      { proposal ? <span className="mt-8 font-bold" >Ainda não há proposta cadastrada para esse usuário</span>  :  proposal.map(data=><Proposal data={data} />)}
                     </div>
                 </div>
                 <div className="lg:flex hidden items-center justify-center h-full w-full ">

@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 
 import api from '../../services/api';
-// import history from '../../history';
+import history from '../../history';
 
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -19,22 +18,20 @@ export default function useAuth() {
     setLoading(false);
   }, []);
   
-  async function handleLogin() {
-    const { data: { token } } = await api.post('/users/login');
+  async function handleLogin(data) {
+    const { data: { token } } = await api.post('/users/login', data);
 
     localStorage.setItem('token', JSON.stringify(token));
     api.defaults.headers.Authorization = `Bearer ${token}`;
     setAuthenticated(true);
-    <Redirect to="/proposal-form"/>
-    // history.push('/users');
+    history.push('/proposal-list');
   }
 
   function handleLogout() {
     setAuthenticated(false);
     localStorage.removeItem('token');
     api.defaults.headers.Authorization = undefined;
-    <Redirect to="/login"/>
-    // history.push('/login');
+    history.push('/');
   }
   
   return { authenticated, loading, handleLogin, handleLogout };

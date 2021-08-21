@@ -8,35 +8,31 @@ import Select from '../components/Select';
 import Button from '../components/Button';
 import Modal from '../components/Modal';
 
+
 function ProposalForm() {
 
     const [openModal, setOpenModal] = useState(false);
-    // const [proposal, setProposal] = useState({start_date:"",
-    //         end_date:"",energy_source:"",
-    //         submarket: "",
-    //         loads:[]
-    // });
+    const [loads, setLoads ] = useState([]);
 
-    function addLoad(e){
+    async function handleLoadSubmit( e){
         e.preventDefault();
-        console.log(e);
-
     }
+    
 
     function handleModal(){
         setOpenModal(!openModal);
     }
 
     const submarket_options = [
-        "NORTE",
-        "NORDESTE",
-        "SUL",
-        "SULDESTE"
+        {description:"NORTE", value:2},
+        {description:"NORDESTE", value:-1},
+        {description:"SUL", value:3.5},
+        {description:"SULDESTE",value:1.5}
     ];
 
     const energy_source_options=[
-        "CONVENCIONAL",
-        "RENOVAVEL"
+        {description:"CONVENCIONAL", value:5},
+        {description:"RENOVAVEL", value:-2}
     ]
 
     const formRef = useRef(null);
@@ -68,23 +64,23 @@ function ProposalForm() {
                             </div>
                             <hr className="w-full mb-2"/>
                             <div className="" style={{minHeight:'200px'}}>
-                                <ul></ul>
+                                <ul className="load-list"></ul>
                             </div>
                             <hr className="w-full mb-2"/>
                             <span className="font-bold text-lg">Valor total da proposta: </span>
                         </div>
                     </div>
-                    {openModal && 
-                    (<Modal title="Adicionar carga" clickClose={handleModal} classCard="lg:w-2/5 w-11/12 p-4">
-                        <Form ref={loadFormRef} onSubmit={(e)=>addLoad(e)}> 
-                            <Input name="company_name" label="Nome da empresa" placeholder="Nome da empresa" />
-                            <Input name="consumption_kwh" label="Quantidade em KWH" type="number" placeholder="Quantidade em KWH" />
-                        </Form>
-                        <Button type="submit" onClick="" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">Adicionar</Button>
-                    </Modal>)}
                     <Button type="submit" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">Cadastrar</Button>
                 </Card>
             </Form>
+                    {openModal && 
+                    (<Modal title="Adicionar carga" clickClose={handleModal} classCard="lg:w-2/5 w-11/12 p-4">
+                        <form ref={loadFormRef} onSubmit={(e)=>handleLoadSubmit(e)}> 
+                            <Input name="company_name" label="Nome da empresa"  placeholder="Nome da empresa" />
+                            <Input name="consumption_kwh" label="Quantidade em KWH" type="number" placeholder="Quantidade em KWH" />
+                        </form>
+                        <Button type="submit" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">Adicionar</Button>
+                    </Modal>)}
         </Template>
     )
 }

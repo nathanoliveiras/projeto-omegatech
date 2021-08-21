@@ -8,8 +8,8 @@ function Proposal({data}) {
     function convertDate(date){
         return new Date(date).toLocaleDateString();
     }
-
-        
+    
+    
 
     return (
         <div key={data.id} className="w-full flex flex-col p-4 mt-4 rounded-lg bg-gray-300 shadow-md">

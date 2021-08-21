@@ -26,9 +26,8 @@ export default function Login() {
               await schema.validate(data, {
                 abortEarly: false,
               });
+              await  handleLogin( data);
               
-              handleLogin(data);
-
         }catch(err){
             const validationErrors = {};
             if (err instanceof Yup.ValidationError) {
