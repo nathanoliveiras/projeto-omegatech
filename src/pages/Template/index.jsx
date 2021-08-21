@@ -3,10 +3,10 @@ import Header from '../../components/Header.js';
 import Main from '../../components/Main';
 
 
-function Template({children}) {
+function Template({children, logged=false}) {
   return(
         <>
-          <Header></Header>
+          <Header logged={logged}></Header>
           <Main>
             {children}
           </Main>
