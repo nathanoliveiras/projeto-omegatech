@@ -1,10 +1,14 @@
 import React from 'react'
 
-function Button({children, className }) {
+function Button({children, className, type, onClick=null }) {
     return (
-        <button className={className} >
+        type==='submit'?
+        (<button type={type} className={className + ' focus:outline-none'} >
             {children}
-        </button>
+        </button>):
+        (<button type={type} onClick={()=>onClick()} className={className + ' focus:outline-none'} >
+        {children}
+    </button>)
     )
 }
 
