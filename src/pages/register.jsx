@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import {Link} from 'react-router-dom';
 import {Form} from '@unform/web';
 import * as Yup from 'yup';
 import Template from "./Template";
@@ -41,12 +42,13 @@ export default function Register() {
             <Card className="lg:w-1/3 w-11/12 h-auto p-10 pt-12 pb-12">
                 <Form onSubmit={handleSubmit} ref={formRef} className="w-full flex flex-col items-center justify-center">
                     <h1 className="font-bold text-2xl mb-2 ">Cadastre-se</h1>
-                    <Input name="email" label="E-mail" type="email" placeholder="E-mail"  />
-                    <Input name="nome" label="Nome" type="text" placeholder="Nome"  />
-                    <Input type="password"  placeholder="Senha" name="password" label="Senha" /> 
-                    <Button className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">
+                    <Input name="email" className="w-full" label="E-mail" type="email" placeholder="E-mail"  />
+                    <Input name="nome" className="w-full" label="Nome" type="text" placeholder="Nome"  />
+                    <Input type="password" className="w-full"  placeholder="Senha" name="password" label="Senha" /> 
+                    <Button type="submit" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">
                        Cadastrar
                     </Button>
+                    <p className="font-bold">Já é cadastrado? <Link  className="text-blue-500 hover:text-blue-400" to='/'>Clique aqui para login</Link></p>
                 </Form>                
             </Card>
 

@@ -1,72 +1,92 @@
-// import { Component } from "react";
-// import { Container } from "../components/container";
-// import {Header} from "../components/header";
-// import Logo from "../assets/logo-blog.png"
-// import { Section } from "../components/section-flex";
-// import { Form } from "../components/form";
-// import { Link } from "react-router-dom";
+import React,{useRef, useState} from 'react'
+import Template from './Template'
+import {Form} from '@unform/web';
+// import * as Yup from 'yup';
+import Card from '../components/Card';
+import Input from '../components/Input';
+import Select from '../components/Select';
+import Button from '../components/Button';
+import Modal from '../components/Modal';
 
-// export default class ProposalForm extends Component {
+function ProposalForm() {
 
-//     inputTypeToDate = (e) => {
-//         e.currentTarget.type = 'date';
-//     }
+    const [openModal, setOpenModal] = useState(false);
+    // const [proposal, setProposal] = useState({start_date:"",
+    //         end_date:"",energy_source:"",
+    //         submarket: "",
+    //         loads:[]
+    // });
 
-//     inputTypeToText = (e) => {
-//         e.currentTarget.type= 'text';
-//     }
+    function addLoad(e){
+        e.preventDefault();
+        console.log(e);
 
+    }
 
-//     render() {
-//         return (
-//             <Container>
-//                 <Header>
-//                     <Link to="/proposal-list">
-//                         <img src={Logo} alt="Logo omega tech"/> 
-//                     </Link> 
-//                 </Header>
-//                 <Section>
-//                     <div className="vertical-scroll">
-//                         <Form>
-//                             <p>Nova proposta</p>
-//                             <div className="two-inputs">
-//                                 <input 
-//                                     type="text" 
-//                                     placeholder="Data de início"
-//                                     className="date"
-//                                     onFocus={this.inputTypeToDate}
-//                                     onBlur={this.inputTypeToText}
-//                                 />
-//                                 <input 
-//                                     type="text" 
-//                                     placeholder="Data de termino"
-//                                     className="date"
-//                                     onFocus={this.inputTypeToDate}
-//                                     onBlur={this.inputTypeToText}
-//                                 />
-//                             </div>
-//                             <span>Cargas</span>
-//                             <input type="text" placeholder="Nome da empresa"/>
-//                             <input type="number" placeholder="Quantidade de KWH"/>
-//                             <button className="blue-button">Nova carga</button>
-//                             <label htmlFor="energy-source">Fonte de energia</label>
-//                             <select id="energy-source">
-//                                 <option>CONVENCIONAL</option>
-//                                 <option>RENOVAVEL</option>
-//                             </select>
-//                             <label htmlFor="submarket">Submercado</label>
-//                             <select id="submarket">
-//                                 <option>NORTE</option>
-//                                 <option>NORDESTE</option>
-//                                 <option>SUL</option>
-//                                 <option>SUDESTE</option>
-//                             </select>
-//                             <button className="orange-button">Enviar</button>
-//                         </Form>
-//                     </div>
-//                 </Section>
-//                 <h2 className="important-text">Valor total da proposta: <span>R$ 100.000</span></h2>
-//             </Container>
-//         )
-//     }
-// }
+    function handleModal(){
+        setOpenModal(!openModal);
+    }
+
+    const submarket_options = [
+        "NORTE",
+        "NORDESTE",
+        "SUL",
+        "SULDESTE"
+    ];
+
+    const energy_source_options=[
+        "CONVENCIONAL",
+        "RENOVAVEL"
+    ]
+
+    const formRef = useRef(null);
+    const loadFormRef = useRef(null);
+    return (
+        <Template logged="true">
+            <Form  ref={formRef} className="lg:w-4/6 w-11/12">
+                <Card className="w-full lg:p-4 p-2 pt-6 flex flex-col items-center justify-center ">
+                    <h1 className="font-bold text-3xl text-center mb-2">Adicionar nova proposta</h1>
+                    <div className="lg:grid flex flex-col w-full p-4 lg:grid-cols-2">
+                        <div className="flex w-full flex-col">
+                            <div className="flex items-center w-full">
+                                <h2 className="font-bold text-xl float-left">Dados gerais</h2>
+                            </div>
+                            <hr className="w-full mb-2"/>
+                            <div className="flex w-full lg:flex-row flex-col">
+                                <Input name="start_date" type="date" contentClass="lg:w-1/2 w-full mr-0 lg:mr-2" placeholder="Data final" label="Data inicial" />
+                                <Input name="end_date" type="date" contentClass=" lg:w-1/2 w-full" placeholder="Data final" label="Data final" />
+                            </div>
+                            <div className="flex w-full lg:flex-row flex-col">
+                                <Select options={energy_source_options} contentClass="lg:w-1/2 w-full mr-0 lg:mr-2" name="energy_source" placeholder="Fonte de Energia" label="Fonte de Energia" />
+                                <Select options={submarket_options} contentClass=" lg:w-1/2 w-full" name="submarket" placeholder="Sub-mercado" label="Sub-mercado" />
+                            </div>
+                        </div>
+                        <div className="lg:ml-4 ml-0 mt-4 lg:mt-0">
+                            <div className="flex items-center w-full justify-between">
+                                <h2 className="font-bold text-xl float-left mr-8">Cargas</h2>
+                                <Button type="button" onClick={handleModal} className="rounded shadow-md hover:bg-opacity-80  pl-6 pr-6 bg-blue-500 text-white font-bold">Adicionar carga</Button>
+                            </div>
+                            <hr className="w-full mb-2"/>
+                            <div className="" style={{minHeight:'200px'}}>
+                                <ul></ul>
+                            </div>
+                            <hr className="w-full mb-2"/>
+                            <span className="font-bold text-lg">Valor total da proposta: </span>
+                        </div>
+                    </div>
+                    {openModal && 
+                    (<Modal title="Adicionar carga" clickClose={handleModal} classCard="lg:w-2/5 w-11/12 p-4">
+                        <Form ref={loadFormRef} onSubmit={(e)=>addLoad(e)}> 
+                            <Input name="company_name" label="Nome da empresa" placeholder="Nome da empresa" />
+                            <Input name="consumption_kwh" label="Quantidade em KWH" type="number" placeholder="Quantidade em KWH" />
+                        </Form>
+                        <Button type="submit" onClick="" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">Adicionar</Button>
+                    </Modal>)}
+                    <Button type="submit" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">Cadastrar</Button>
+                </Card>
+            </Form>
+        </Template>
+    )
+}
+
+export default ProposalForm

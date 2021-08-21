@@ -41,13 +41,12 @@ export default function Login() {
             <Card className="lg:w-1/3 w-11/12  h-auto p-10 pt-12 pb-12">
                 <Form onSubmit={handleSubmit} ref={formRef} className="w-full flex flex-col items-center justify-center">
                     <h1 className="font-bold text-2xl mb-2 ">Faça seu login</h1>
-                    <Input name="email" label="E-mail" type="email"  placeholder="E-mail" />
-                    <Input type="password"  placeholder="Senha"  name="password" label="Senha"/> 
-                    <Button className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">
+                    <Input name="email" label="E-mail" type="email" className="w-full"  placeholder="E-mail" />
+                    <Input type="password"  placeholder="Senha" className="w-full"  name="password" label="Senha"/> 
+                    <Button type="submit" className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">
                         Entrar
                     </Button>
                     <p className="font-bold">Ainda não tem conta? <Link  className="text-blue-500 hover:text-blue-400" to='/register'>Cadastre-se aqui</Link></p>
-
                 </Form>
                 
             </Card>
