@@ -1,45 +1,60 @@
-import { Component } from "react";
-import { Container } from "../components/container";
-import {Header} from "../components/header";
-import Logo from "../assets/logo-blog.png"
-import { Form } from "../components/form";
-import { Section } from "../components/section-flex";
+import React, {useRef} from 'react';
+import * as Yup from 'yup';
 import { Link } from "react-router-dom";
+import { Form } from '@unform/web';
+import Template from "./Template";
+import Input from "../components/Input";
+import Card from '../components/Card';
+import Button from '../components/Button';
 
 
-export default class Login extends Component {
-    render(){
-        return(
-            <Container>
-                <Header>
-                        <img src={Logo} alt="Logo omega tech"/>        
-                </Header>
-                <Section>
-                   
-                <Form>
-                    <h2>Calculadora de proposta</h2>
-                    <p>Faça seu login</p>
-                    <input 
-                        type="email" 
-                        placeholder="Email"
-                        name="txtEmail"
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Senha"
-                        name="txtPassword"
-                    />
-                    <button 
-                        className="orange-button" 
-                        type="submit">Entrar
-                    </button>
-                    <p>Ainda não tem conta?<Link to='/register'>Cadastre-se aqui</Link></p>
+export default function Login() {
+    const formRef = useRef(null)
+    async function handleSubmit(data){
+        try{
+            formRef.current.setErrors({});
+            const schema = Yup.object().shape({
+                email: Yup.string()
+                  .email('Insira um e-mail válido')
+                  .required('Esse campo é obrigatório'),
+                password: Yup.string()
+                  .required('Esse campo é obrigatório'),
+              });
+              await schema.validate(data, {
+                abortEarly: false,
+              });
+              // Validation passed
+              console.log(data);
+        }catch(err){
+            const validationErrors = {};
+            if (err instanceof Yup.ValidationError) {
+               err.inner.forEach(error => {
+                    validationErrors[error.path] = error.message;
+                });
+                formRef.current.setErrors(validationErrors);
+            }
+        }
+    }
+
+    return (
+        <Template>
+            <Card className="lg:w-1/3 w-11/12  h-auto p-10 pt-12 pb-12">
+                <Form onSubmit={handleSubmit} ref={formRef} className="w-full flex flex-col items-center justify-center">
+                    <h1 className="font-bold text-2xl mb-2 ">Faça seu login</h1>
+                    <Input name="email" label="E-mail" type="email"  placeholder="E-mail" />
+                    <Input type="password"  placeholder="Senha"  name="password" label="Senha"/> 
+                    <Button className="mt-2 mb-4 rounded shadow-md hover:bg-opacity-80 p-2 pl-6 pr-6 bg-yellow-500 text-white font-bold">
+                        Entrar
+                    </Button>
+                    <p className="font-bold">Ainda não tem conta? <Link  className="text-blue-500 hover:text-blue-400" to='/register'>Cadastre-se aqui</Link></p>
 
                 </Form>
                 
-                </Section>
-            </Container>
-        )
-    }
+            </Card>
+
+        </Template>
+    )
 }
+
+
 
