@@ -9,7 +9,7 @@
 
 ## Sobre
 
-Projeto em React para integrar com o a api back-end desenvolvida para o projeto final do curso da Gama Academy em parceria com a Omega Energia.
+Projeto em React para integrar com o a [API back-end](https://github.com/GuilhermeWatanabe/omega-api) desenvolvida para o projeto final do curso da Gama Academy em parceria com a Omega Energia.
 
 ---
 
