@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter,Switch, Route } from 'react-router-dom';
 import App from './App';
+import './style.css';
 import ProposalForm from './pages/proposal-form';
 import ProposalList from './pages/proposal-list';
 import Register from './pages/register';
