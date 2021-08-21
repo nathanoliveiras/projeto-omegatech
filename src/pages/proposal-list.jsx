@@ -1,70 +1,25 @@
-import React from 'react';
+import React ,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { PlusIcon } from '@heroicons/react/outline';
 import Proposal from '../components/Proposal';
 import Template from './Template/';
+import api from '../services/api';
+import Spinner from '../components/Spinner';
 
 function ProposalList() {
-    // const [proposal, setProposal] = useState([])
-    // useEffect(()=>{
+    const [proposal, setProposal] = useState([])
+    useEffect(()=>{
+      async function getProposal(){
+         const {data} =  await api.get('/proposal');
+         setProposal({...data})
+      }
+      getProposal();
+    },[]);
 
-    // },[]);
-    const proposal =[
-        {
-            "id": 1,
-            "public_id": "fe663cce-74e4-40f9-bf7d-71aee3f892dc",
-            "start_date": "2021-08-15T00:00:00.000Z",
-            "end_date": "2022-08-15T00:00:00.000Z",
-            "total_consumption": "566kW",
-            "energy_source": "CONVENCIONAL",
-            "submarket": "SUL",
-            "hired": false,
-            "proposal_value": "R$ 5668.5",
-            "loads": [
-              {
-                "id": 1,
-                "company_name": "abc",
-                "consumption_kwh": "566kw"
-              }
-            ]
-          },
-          {
-            "id": 3,
-            "public_id": "216603b9-6f04-484d-987b-5206fde1f273",
-            "start_date": "2021-08-15T00:00:00.000Z",
-            "end_date": "2022-08-15T00:00:00.000Z",
-            "total_consumption": "566kW",
-            "energy_source": "CONVENCIONAL",
-            "submarket": "SUL",
-            "hired": false,
-            "proposal_value": "R$ 5668.5",
-            "loads": [
-              {
-                "id": 3,
-                "company_name": "abc",
-                "consumption_kwh": "566kw"
-              }
-            ]
-          },{
-            "id": 4,
-            "public_id": "216603b9-6f04-484d-987b-5206fde1f273",
-            "start_date": "2021-08-15T00:00:00.000Z",
-            "end_date": "2022-08-15T00:00:00.000Z",
-            "total_consumption": "566kW",
-            "energy_source": "CONVENCIONAL",
-            "submarket": "SUL",
-            "hired": false,
-            "proposal_value": "R$ 5668.5",
-            "loads": [
-              {
-                "id": 3,
-                "company_name": "abc",
-                "consumption_kwh": "566kw"
-              }
-            ]
-          }
-    ]
-
+    if(proposal===[]){
+      return <Spinner/>
+    }
+    
     return (
         <Template logged="true">
             <div className="w-full lg:h-full h-auto lg:grid flex  lg:grid-cols-2 ">           

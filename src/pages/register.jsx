@@ -1,11 +1,12 @@
 import React, {useRef} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {Form} from '@unform/web';
 import * as Yup from 'yup';
 import Template from "./Template";
 import Input from "../components/Input";
 import Card from '../components/Card';
 import Button from '../components/Button';
+import api from '../services/api';
 
 export default function Register() {
     const formRef = useRef(null)
@@ -25,8 +26,11 @@ export default function Register() {
               await schema.validate(data, {
                 abortEarly: false,
               });
-              // Validation passed
-              console.log(data);
+
+             const response = await api.post('/users', data);
+             console.log(response);
+              
+              
         }catch(err){
             const validationErrors = {};
             if (err instanceof Yup.ValidationError) {

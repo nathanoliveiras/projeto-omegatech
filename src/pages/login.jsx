@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useContext} from 'react';
 import * as Yup from 'yup';
 import { Link } from "react-router-dom";
 import { Form } from '@unform/web';
@@ -6,9 +6,12 @@ import Template from "./Template";
 import Input from "../components/Input";
 import Card from '../components/Card';
 import Button from '../components/Button';
+import {Context} from '../providers/auth';
 
 
 export default function Login() {
+    
+    const { handleLogin } = useContext(Context);
     const formRef = useRef(null)
     async function handleSubmit(data){
         try{
@@ -23,8 +26,9 @@ export default function Login() {
               await schema.validate(data, {
                 abortEarly: false,
               });
-              // Validation passed
-              console.log(data);
+              
+              handleLogin(data);
+
         }catch(err){
             const validationErrors = {};
             if (err instanceof Yup.ValidationError) {
