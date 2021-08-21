@@ -1,21 +1,13 @@
-import styled from "styled-components";
+import React from 'react';
+import Logo from '../assets/logo-blog.png'
 
-export const Header = styled.header`
-    background-color: #3980FF;
-    width: 100%;
-    padding: 1em 0;
+function Header({dropdown = null}) {
+    return (
+        <header className="w-full h-16 bg-blue-500 p-2 pl-4 pr-4">
+            <img src={Logo} alt="logo" className="h-full w-auto"></img>
+            { dropdown && dropdown}
+        </header>
+    )
+}
 
-    img{
-        height: 90px;
-        display: block;
-        margin-left: 2em;
-    }
-
-    p{
-        font-family:SharpSans,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,
-                    Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,
-                    Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
-        font-size: 2rem;
-        font-weight: 600;
-    }
-`
+export default Header
